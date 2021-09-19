@@ -10,4 +10,5 @@ require (
 require (
 	github.com/onsi/ginkgo v1.16.4 // indirect
 	github.com/onsi/gomega v1.16.0 // indirect
+	go.etcd.io/etcd v3.3.25+incompatible // indirect
 )
