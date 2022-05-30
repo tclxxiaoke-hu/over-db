@@ -1,22 +1,17 @@
 package main
 
 import (
-	"github.com/go-redis/redis"
+	"fmt"
+	"over-db/use_redis"
 )
 
-var redisDb *redis.Client
+func main() {
+	use_redis.InitClient()
 
-//InitClient 初始化连接
-func InitClient() (err error) {
-	redisDb = redis.NewClient(&redis.Options{
-		Addr:     "127.0.0.1:6379",
-		Password: "", // no password set
-		DB:       0,  // use default DB
-	})
-
-	_, err = redisDb.Ping().Result()
+	v, err := use_redis.GetIncrId()
 	if err != nil {
-		return err
+		fmt.Errorf("%v", err)
 	}
-	return nil
+
+	fmt.Println(v)
 }
