@@ -59,6 +59,7 @@ func NewRedisLock(store *redis.Client, key string) *RedisLock {
 // Acquire acquires the lock.
 // 加锁
 func (rl *RedisLock) Acquire() (bool, error) {
+	// 添加一行测试代码
 	// 获取过期时间
 	seconds := atomic.LoadUint32(&rl.seconds)
 	// 默认锁过期时间为500ms，防止死锁
