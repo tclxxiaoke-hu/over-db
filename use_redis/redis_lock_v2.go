@@ -84,6 +84,7 @@ func (rl *RedisLock) Acquire() (bool, error) {
 
 // Release releases the lock.
 // 释放锁
+// 测试过的
 func (rl *RedisLock) Release() (bool, error) {
 	resp, err := rl.store.Eval(delCommand, []string{rl.key}, []string{rl.id}).Result()
 	if err != nil {
